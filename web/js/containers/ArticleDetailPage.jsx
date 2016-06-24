@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ArticleDetail from '../components/ArticleDetailPage/ArticleDetail'
 import { fetchArticle } from '../actions/articleDetail'
 import DocumentTitle from 'react-document-title'
-import styles from '../../css/style.css';
+import styles from '../../css/style';
 
 class ArticleDetailPage extends Component {
 
