@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../css/style.css'
+import styles from '../../css/header'
 import { Link } from 'react-router'
+import Author from './Author'
 
 export default class Header extends Component {
   render() {
@@ -8,7 +9,8 @@ export default class Header extends Component {
 
     return (
       <div className={styles.header}>
-        <Link to={''}>sambaiz.net(WIP)</Link>
+        <Author />
+        <Link to={''}>sambaiz.net</Link>
       </div>
     )
   }
