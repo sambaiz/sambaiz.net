@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../../css/style.css'
+import styles from '../../../css/article'
 import ArticleListItem from './ArticleListItem'
 
 export default class ArticleList extends Component {

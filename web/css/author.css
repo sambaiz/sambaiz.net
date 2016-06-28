@@ -1,0 +1,33 @@
+.author {
+  width: 300px;
+  height: 100px;
+  top: 20px;
+  left: 30px;
+  background-color: #ffffff;
+  position: fixed;
+  border-radius: 5px;
+}
+
+.authorImage{
+  width: 80px;
+  margin: 10px 10px;
+  float: left;
+}
+
+.authorText{
+  float: right;
+  width: 200px;
+  word-wrap: break-word;
+  text-align: left;
+  color: #000000;
+  position: relative;
+  top: 10px;
+  font-size: 100%;
+}
+
+@media (max-width: 550px) {
+  .author {
+    visibility: collapse;
+    position: fixed;
+  }
+}

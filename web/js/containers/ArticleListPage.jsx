@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import ArticleList from '../components/ArticleListPage/ArticleList'
 import { fetchArticleList } from '../actions/articleList'
 import DocumentTitle from 'react-document-title'
-import styles from '../../css/style.css';
 
 class ArticleListPage extends Component {
 

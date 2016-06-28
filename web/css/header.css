@@ -3,39 +3,30 @@
   z-index: -1;
   position: fixed;
   top: 55px;
-  text-align: center;
 }
 
 .header a {
   color: #009933;
   vertical-align: middle;
   font-size: 230%;
+  top: 55px;
   height: 100px;
 }
 
-.author {
-  width: 300px;
-  height: 100px;
-  top: 20px;
-  left: 30px;
-  background-color: #ffffff;
-  position: fixed;
-  border-radius: 5px;
+@media (max-width: 550px) {
+  .header {
+    text-align: center;
+  }
 }
 
-.autorImage{
-  width: 80px;
-  height: 80px;
-  margin: 10px 10px;
-  float: left;
+@media (min-width: 550px) and (max-width: 850px) {
+  .header {
+    text-align: right;
+  }
 }
 
-.autorText{
-  float: right;
-  width: 200px;
-  word-wrap: break-word;
-  text-align: left;
-  color: #000000;
-  position: relative;
-  top: 10px;
+@media (min-width: 850px) {
+  .header {
+    text-align: center;
+  }
 }
