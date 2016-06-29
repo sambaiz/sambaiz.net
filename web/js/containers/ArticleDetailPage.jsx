@@ -20,7 +20,7 @@ class ArticleDetailPage extends Component {
     const { children, title, date, content, loading, parsing, articleId } = this.props
 
     return (
-      <DocumentTitle title={`${title || ''} | sambaiz.net`}>
+      <DocumentTitle title={`${title || ''} [sambaiz.net]`}>
         <div>
           <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={articleId} />
           {children}
