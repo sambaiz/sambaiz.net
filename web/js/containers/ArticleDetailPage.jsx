@@ -18,6 +18,7 @@ class ArticleDetailPage extends Component {
 
   render() {
     const { children, title, date, content, loading, parsing, articleId } = this.props
+
     return (
       <DocumentTitle title={`${title || ''} | sambaiz.net`}>
         <div>

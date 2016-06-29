@@ -25,6 +25,14 @@
   font-size: 100%;
 }
 
+.twitter{
+  color: #00acec;
+}
+
+.github{
+  color: #000000
+}
+
 @media (max-width: 550px) {
   .author {
     visibility: collapse;
