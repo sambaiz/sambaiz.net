@@ -12,7 +12,7 @@ export default function articleList(state = initialState, action) {
         { articles: state.articles.concat(action.response), loading: false, page: action.page })
 
     case ARTICLE_LIST_FAILURE:
-      return Object.assign({}, state, { loading: false })
+      return Object.assign({}, state, { error: action.error, loading: false })
 
     default:
       return state

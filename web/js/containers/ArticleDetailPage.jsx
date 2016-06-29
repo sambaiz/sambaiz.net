@@ -1,21 +1,27 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import ArticleDetail from '../components/ArticleDetailPage/ArticleDetail'
-import { fetchArticle } from '../actions/articleDetail'
+import { fetchArticle, parseArticleDetail } from '../actions/articleDetail'
 import DocumentTitle from 'react-document-title'
 
 class ArticleDetailPage extends Component {
 
   componentDidMount() {
-    this.props.fetchArticle(1)
+    this.props.fetchArticle(this.props.articleId)
+  }
+
+  componentWillUpdate(nextProps, nextStates){
+    const { articleId, content, detail, parsing } = nextProps
+    if(!parsing && typeof detail !== "undefined" && typeof content === "undefined")
+      this.props.parseArticleDetail(articleId, detail)
   }
 
   render() {
-    const { children, articleDetail } = this.props
+    const { children, title, date, content, loading, parsing } = this.props
     return (
-      <DocumentTitle title={`${articleDetail.title || ''} | sambaiz.net`}>
+      <DocumentTitle title={`${title || ''} | sambaiz.net`}>
         <div>
-          <ArticleDetail date={articleDetail.date} title={articleDetail.title} content={articleDetail.detail || ""} />
+          <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)}/>
           {children}
         </div>
       </DocumentTitle>
@@ -24,16 +30,33 @@ class ArticleDetailPage extends Component {
 }
 
 ArticleDetailPage.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  parsing: PropTypes.bool.isRequired,
+  content: PropTypes.string,
+  detail: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  articleId: PropTypes.string,
   // Injected by React Router
   children: PropTypes.node
 }
 
 function mapStateToProps(state, ownProps) {
+
+  const { articleDetail: { loading, parsing, content, detail, title, date } } = state
+
   return {
-    articleDetail: state.articleDetail
+    loading,
+    parsing,
+    content,
+    detail,
+    title,
+    date,
+    articleId: ownProps.params.articleId
   }
 }
 
 export default connect(mapStateToProps, {
-  fetchArticle
+  fetchArticle,
+  parseArticleDetail
 })(ArticleDetailPage)

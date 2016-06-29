@@ -7,12 +7,12 @@ import DocumentTitle from 'react-document-title'
 class ArticleListPage extends Component {
 
   render() {
-    const { children, articleList, fetchArticleList } = this.props
+    const { children, loading, articles, page, fetchArticleList, error } = this.props;
     return (
       <DocumentTitle title={'sambaiz.net'}>
         <div>
           <ArticleList
-            articles={articleList.articles} fetchArticles={fetchArticleList} page={articleList.page} loading={articleList.loading}
+            articles={articles} fetchArticles={fetchArticleList} page={page} loading={loading} error={error}
           />
           {children}
         </div>
@@ -22,14 +22,23 @@ class ArticleListPage extends Component {
 }
 
 ArticleListPage.propTypes = {
+  loading: PropTypes.bool,
+  articles: PropTypes.array,
+  page: PropTypes.number,
+  error: PropTypes.string,
   // Injected by React Router
-  children: PropTypes.node,
-  articleList: PropTypes.object.isRequired
+  children: PropTypes.node
 }
 
 function mapStateToProps(state, ownProps) {
+
+  const { articleList: { loading, articles, page, error } } = state
+
   return {
-    articleList: state.articleList
+    loading,
+    articles,
+    page,
+    error
   }
 }
 
