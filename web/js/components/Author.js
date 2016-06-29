@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import styles from '../../css/author'
+import classNames from 'classnames'
 
 export default class Author extends Component {
   render() {
@@ -11,6 +12,10 @@ export default class Author extends Component {
         <div className={styles.authorText}>
           <div>書いてる人: sambaiz</div>
           <div>渋谷でプログラム書いてる</div>
+          <div>
+            <a href="https://twitter.com/sambaiz"><i className={classNames("fa", "fa-twitter")} aria-hidden="true"></i></a>
+            <a href="https://github.com/sambaiz"><i className={classNames("fa", "fa-github")} aria-hidden="true"></i></a>
+          </div>
         </div>
       </div>
     )

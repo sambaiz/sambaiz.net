@@ -1,0 +1,130 @@
+.share{
+  margin-top: 50px;
+  text-align: center;
+  font-size: 100%;
+}
+
+/* http://www.daipanman.com/entry/2015/07/05/080000 */
+
+/* 回り込み解除のためのクラス */
+.clearfix{
+    zoom:1;
+}
+.clearfix:after{
+    content:"";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility:hidden;
+}
+
+/* サークルのスタイル */
+.sns_circle{
+    position:relative;
+    width: 50px;
+    height: 50px;
+    margin:0 3px 0 3px;
+    -webkit-border-radius: 15%;
+    -moz-border-radius: 15%;
+    border-radius: 15%;
+    background-color: #999;
+    float:left;
+    list-style: none;
+}
+
+/* Webフォントに関する指定 */
+.sns_circle span{
+    position:absolute;
+    font-size:35px;
+    color:#FFF;
+}
+
+/* Webフォントに関する指定(はてぶ) */
+.sns_circle.hatebu.sns_circle span{
+    position:absolute;
+    padding:4px 0 0 8px;
+    color:#FFF;
+    font-size: 30px;
+}
+
+/* Webフォントに関する指定(Twitter) */
+.sns_circle.twitter.sns_circle span{
+    position:absolute;
+    padding:1px 0 0 9px;
+    color:#FFF;
+}
+
+/* Webフォントに関する指定(Facebook) */
+.sns_circle.facebook.sns_circle span{
+    position:absolute;
+    padding:5px 0 0 18px;
+    color:#FFF;
+}
+
+/* Webフォントに関する指定(Google+) */
+.sns_circle.googleplus.sns_circle span{
+    position:absolute;
+    padding:6px 0 0 14px;
+    color:#FFF;
+    font-size: 30px;
+}
+
+/* Webフォントに関する指定(Pocket) */
+.sns_circle.pocket.sns_circle span{
+    position:absolute;
+    padding:6px 0 0 12px;
+    font-size: 28px;
+    color:#FFF;
+}
+
+/* リンク領域をブロック全体に */
+.sns_circle a{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    -webkit-border-radius: 15%;
+    -moz-border-radius: 15%;
+    border-radius: 15%;
+    text-indent:-999px;
+    color:#FFF;
+}
+
+/* マウスオーバー時のスタイル */
+.sns_circle a:hover{
+    background-color:#FFF;
+    opacity: 0.5;
+}
+
+/* シェアボタンエリア */
+ul.circle_group{
+    width: 280px;
+    margin:auto;
+    list-style: none;
+    padding:0;
+}
+
+/* Font Awesome hatena bookmark（手作り） */
+.fa-hatena:before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+/* アイコン毎の配色と配置 */
+.sns_circle.hatebu{
+    background-color: #006fbb;
+}
+.sns_circle.twitter{
+    background-color: #00acec;
+}
+.sns_circle.facebook{
+    background-color: #265a96;
+}
+.sns_circle.googleplus{
+    background-color: #dd4b39;
+}
+.sns_circle.pocket{
+    background-color: #EE4256;
+}

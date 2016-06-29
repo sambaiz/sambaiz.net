@@ -17,11 +17,11 @@ class ArticleDetailPage extends Component {
   }
 
   render() {
-    const { children, title, date, content, loading, parsing } = this.props
+    const { children, title, date, content, loading, parsing, articleId } = this.props
     return (
       <DocumentTitle title={`${title || ''} | sambaiz.net`}>
         <div>
-          <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)}/>
+          <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={articleId} />
           {children}
         </div>
       </DocumentTitle>
