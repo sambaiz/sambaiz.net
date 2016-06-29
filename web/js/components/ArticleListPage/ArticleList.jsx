@@ -18,7 +18,7 @@ export default class ArticleList extends Component {
     const { articles, loading } = this.props;
 
     return <div className={styles.articleList}>
-      { articles.map((a) => <ArticleListItem key={a.id} id={a.id} date={a.date} title={a.title} tags={a.tags} />) }
+      { articles.map((a) => <ArticleListItem key={a.id} id={a.id} date={a.date.replace('T', ' ')} title={a.title} tags={a.tags} />) }
       { loading ? <div className={loadingStyle.loader}></div> : <div></div> }
     </div>
   }
