@@ -5,7 +5,7 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start:prod": "node dist/js/server.js",
-    "build": "node node_modules/webpack/bin/webpack && babel js/server.js -d dist"
+    "build": "NODE_ENV=production node node_modules/webpack/bin/webpack && babel js/server.js -d dist"
   },
   "author": "sambaiz",
   "devDependencies": {
