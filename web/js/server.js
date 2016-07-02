@@ -24,8 +24,11 @@ app.get('/article/:articleId', function (req, res) {
     }else if(response.status != 200){
       res.status(response.status).send(`API error ${response.status}`)
     }else{
-      let json = response.json();
-      res.status(200).send(page(`http://sambaiz.net${req.url}`, response.json().title, '書いた'));
+      return response.json();
+    }
+  }).then(function(json) {
+    if(json){
+      res.status(200).send(page(`http://sambaiz.net${req.url}`, json.title, '書いた'));
     }
   })
 })
