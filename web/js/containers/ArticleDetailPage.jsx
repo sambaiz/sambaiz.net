@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import ArticleDetail from '../components/ArticleDetailPage/ArticleDetail'
-import { fetchArticle, parseArticleDetail } from '../actions/articleDetail'
-import DocumentTitle from 'react-document-title'
+import ArticleDetail from '../components/ArticleDetailPage/ArticleDetail.jsx'
+import { fetchArticle, parseArticleDetail } from '../actions/articleDetail.js'
+import Helmet from "react-helmet";
 
 class ArticleDetailPage extends Component {
 
@@ -20,12 +20,11 @@ class ArticleDetailPage extends Component {
     const { children, title, date, content, loading, parsing, articleId } = this.props
 
     return (
-      <DocumentTitle title={`${title || ''} [sambaiz.net]`}>
-        <div>
-          <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={articleId} />
-          {children}
-        </div>
-      </DocumentTitle>
+      <div>
+        <Helmet title={title || 'loading...'} />
+        <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={articleId} />
+        {children}
+      </div>
     )
   }
 }

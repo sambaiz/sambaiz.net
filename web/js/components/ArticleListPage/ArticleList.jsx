@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../../css/article'
-import loadingStyle from '../../../css/loading'
-import ArticleListItem from './ArticleListItem'
+import styles from '../../../css/article.css'
+import loadingStyle from '../../../css/loading.css'
+import ArticleListItem from './ArticleListItem.jsx'
 
 export default class ArticleList extends Component {
 

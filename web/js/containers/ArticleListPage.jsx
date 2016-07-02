@@ -1,22 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import ArticleList from '../components/ArticleListPage/ArticleList'
-import { fetchArticleList } from '../actions/articleList'
-import DocumentTitle from 'react-document-title'
+import ArticleList from '../components/ArticleListPage/ArticleList.jsx'
+import { fetchArticleList } from '../actions/articleList.js'
+import Helmet from "react-helmet";
 
 class ArticleListPage extends Component {
 
   render() {
     const { children, loading, articles, page, fetchArticleList, error } = this.props;
     return (
-      <DocumentTitle title={'sambaiz.net'}>
-        <div>
-          <ArticleList
-            articles={articles} fetchArticles={fetchArticleList} page={page} loading={loading} error={error}
-          />
-          {children}
-        </div>
-      </DocumentTitle>
+      <div>
+        <ArticleList
+          articles={articles} fetchArticles={fetchArticleList} page={page} loading={loading} error={error}
+        />
+        {children}
+      </div>
     )
   }
 }

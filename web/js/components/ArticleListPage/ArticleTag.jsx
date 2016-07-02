@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../../css/article';
+import styles from '../../../css/article.css';
 import { Link } from 'react-router';
 
 export default class ArticleTag extends Component {

@@ -1,4 +1,4 @@
-import { CALL_API } from '../middleware/api'
+import { CALL_API } from '../middleware/api.js'
 import marked from 'marked'
 
 export const ARTICLE_REQUEST = 'ARTICLE_REQUEST'

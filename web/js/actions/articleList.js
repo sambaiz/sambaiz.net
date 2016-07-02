@@ -1,4 +1,4 @@
-import { CALL_API } from '../middleware/api'
+import { CALL_API } from '../middleware/api.js'
 
 export const ARTICLE_LIST_REQUEST = 'ARTICLE_LIST_REQUEST'
 export const ARTICLE_LIST_SUCCESS = 'ARTICLE_LIST_SUCCESS'

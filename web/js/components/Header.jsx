@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../css/header'
+import styles from '../../css/header.css'
 import { Link } from 'react-router'
-import Author from './Author'
+import Author from './Author.jsx'
 
 export default class Header extends Component {
   render() {

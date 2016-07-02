@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import api from '../middleware/api'
+import api from '../middleware/api.js'
 import rootReducer from '../reducers'
 import ReduxThunk from 'redux-thunk'
 

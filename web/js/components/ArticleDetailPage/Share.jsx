@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../../css/share'
+import styles from '../../../css/share.css'
 import classNames from 'classnames'
 
 export default class Share extends Component {

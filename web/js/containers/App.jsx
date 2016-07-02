@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import Header from '../components/Header'
-import DocumentTitle from 'react-document-title'
+import Header from '../components/Header.jsx'
+import Helmet from "react-helmet";
 
 class App extends Component {
   constructor(props) {
@@ -12,12 +12,11 @@ class App extends Component {
   render() {
     const { children } = this.props
     return (
-      <DocumentTitle title={'sambaiz.net'}>
-        <div>
-          <Header breadcrumb={[]} />
-          {children}
-        </div>
-      </DocumentTitle>
+      <div>
+        <Helmet title={'sambaiz.net'} />
+        <Header breadcrumb={[]} />
+        {children}
+      </div>
     )
   }
 }

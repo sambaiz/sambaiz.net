@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
-import styles from '../../../css/article'
-import loadingStyle from '../../../css/loading'
-import md from 'github-markdown-css/github-markdown'
-import Share from './Share'
+import styles from '../../../css/article.css'
+import loadingStyle from '../../../css/loading.css'
+import md from 'github-markdown-css/github-markdown.css'
+import Share from './Share.jsx'
 
 export default class ArticleDetail extends Component {
 

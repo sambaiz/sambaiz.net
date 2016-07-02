@@ -18,16 +18,16 @@ export default function articleDetail(state = initialState, action) {
       })
 
     case ARTICLE_FAILURE:
-      return Object.assign({}, initialState, {loading: false})
+      return Object.assign({}, state, {loading: false})
 
     case PARSE_DETAIL_BEGIN:
-      return Object.assign({}, initialState, {parsing: true})
+      return Object.assign({}, state, {parsing: true})
 
     case PARSE_DETAIL_SUCCESS:
-      return Object.assign({}, initialState, {content: action.content, parsing: false})
+      return Object.assign({}, state, {content: action.content, parsing: false})
 
     case PARSE_DETAIL_FAILURE:
-      return Object.assign({}, initialState, {error: action.error, parsing: false})
+      return Object.assign({}, state, {error: action.error, parsing: false})
 
     default:
       return state

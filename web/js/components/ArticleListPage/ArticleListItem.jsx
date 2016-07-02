@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../../../css/article';
+import styles from '../../../css/article.css';
 import { Link } from 'react-router';
-import ArticleTag from './ArticleTag'
+import ArticleTag from './ArticleTag.jsx'
 
 export default class ArticleListItem extends Component {
   render() {

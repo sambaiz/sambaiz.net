@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
-import styles from '../../css/author'
+import styles from '../../css/author.css'
 import classNames from 'classnames'
 
 export default class Author extends Component {
