@@ -8,12 +8,10 @@ export default class ArticleListItem extends Component {
     const { id, date, title, tags } = this.props
 
     return (
-      <Link to={`/article/${id}`}>
-        <div className={styles.articleListItem}>
-            <div className={styles.articleListItemTitle}>{title}</div>
-            <div className={styles.articleListItemDate}>{date}</div>
-            { /* tags.map((t) => <ArticleTag name={t} />) */ }
-        </div>
+      <Link to={`/article/${id}`} className={styles.articleListItem}>
+          <div className={styles.articleListItemTitle}>{title}</div>
+          <div className={styles.articleListItemDate}>{date}</div>
+          { /* tags.map((t) => <ArticleTag name={t} />) */ }
       </Link>
     )
   }

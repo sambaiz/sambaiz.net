@@ -1,6 +1,6 @@
 .articleList {
   display: flex;
-  flex-flow: row, wrap;
+  flex-flow: row wrap;
   box-sizing: border-box;
   width: 100%;
   margin: 150px 0;
