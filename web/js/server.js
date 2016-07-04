@@ -49,7 +49,7 @@ function page(fullUrl, title, description)  {
         <meta property="og:type" content="blog">
         <meta property="og:image" content="http://d2wgaf7ubdj1mv.cloudfront.net/my.jpg">
         <meta property="og:url" content="${fullUrl}">
-        <meta name="google-site-verification" content="C7Dg67yQVY4rB4GNv3FiBc6yEp7FYGj9mGOEWYhV6SY" />
+        <meta name="google-site-verification" content="CEqNYjzc4Y7hb3FY7uUkmllGzeDc40brBwQJixeH61Q" />
       </head>
       <body>
         <div id="app"></div>
