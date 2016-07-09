@@ -49,7 +49,7 @@ function render(req, res, isFinishLoading) {
       var unscribe = store.subscribe(() => {
         if(isFinishLoading(store.getState()) === true){
           res.status(200).send(
-            page(_render(), store.getState(), 'http://sambaiz.net', 'sambaiz.net', '僕のホームページ')
+            page(_render(), store.getState())
           )
           unscribe();
         }
@@ -63,12 +63,12 @@ function render(req, res, isFinishLoading) {
   })
 }
 
-function page(body, state, fullUrl, title, description)  {
+function page(body, state)  {
   return `
     <!doctype html>
     <html>
       <head>
-        <title>${title}</title>
+        <title></title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="/styles.css">
