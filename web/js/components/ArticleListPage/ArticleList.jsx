@@ -5,13 +5,13 @@ import ArticleListItem from './ArticleListItem.jsx'
 
 export default class ArticleList extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.fetch();
   }
 
   fetch() {
-    const { fetchArticles, page, loading, error } = this.props;
-    if(!loading && !error) fetchArticles(page+1);
+    const { fetchArticles, page, loading, loaded, error } = this.props;
+    if(!loading && !loaded && !error) fetchArticles(page+1);
   }
 
   render() {
@@ -29,5 +29,6 @@ ArticleList.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
   error: PropTypes.string
 }

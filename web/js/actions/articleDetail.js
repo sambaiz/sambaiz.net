@@ -9,6 +9,7 @@ export function fetchArticle(id) {
   return {
     [CALL_API]: {
       types: [ ARTICLE_REQUEST, ARTICLE_SUCCESS, ARTICLE_FAILURE ],
+      next: (json) => parseArticleDetail(json.id, json.detail),
       endpoint: `articles/${id}`
     }
   }

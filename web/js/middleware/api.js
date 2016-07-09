@@ -50,10 +50,13 @@ export default store => next => action => {
   next(actionWith({ type: requestType }))
 
   return callApi(endpoint).then(
-    response => next(actionWith({
-      response,
-      type: successType
-    })),
+    response => {
+      next(actionWith({
+        response,
+        type: successType
+      }));
+      if(typeof callAPI.next !== 'undefined') store.dispatch(callAPI.next(response));
+    },
     error => next(actionWith({
       type: failureType,
       error: error.message || 'Something bad happened'

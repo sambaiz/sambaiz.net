@@ -8,7 +8,7 @@ import '../css/global.css'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-const store = configureStore()
+const store = configureStore(window.__INITIAL_STATE__ || {})
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(

@@ -5,8 +5,7 @@ import classNames from 'classnames'
 export default class Share extends Component {
 
   render() {
-    const url = window.location.href;
-    const title = document.title;
+    const { url, title } = this.props;
 
     return (
       <div>
@@ -23,4 +22,6 @@ export default class Share extends Component {
 }
 
 Share.propTypes = {
+  url: PropTypes.string,
+  title: PropTypes.string
 }

@@ -1,13 +1,17 @@
 var path = require('path')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './js/main.jsx',
+  entry: './js/server.js',
+  target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'server.js',
     publicPath: '/'
   },
   module: {
@@ -20,9 +24,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader:  ExtractTextPlugin.extract('style', 'css?modules', 'postcss'),
+        loaders: ['isomorphic-style', 'css?modules'],
         include: __dirname
-      }
+      },
+      { test: /\.json$/, loader: "json-loader"}
     ]
   },
   postcss: function () {
@@ -31,7 +36,6 @@ module.exports = {
   plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }),
-      new ExtractTextPlugin("styles.css")
+      })
     ]
 }

@@ -2,16 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import ArticleList from '../components/ArticleListPage/ArticleList.jsx'
 import { fetchArticleList } from '../actions/articleList.js'
-import Helmet from "react-helmet";
 
 class ArticleListPage extends Component {
 
   render() {
-    const { children, loading, articles, page, fetchArticleList, error } = this.props;
+    const { children, loading, loaded, articles, page, fetchArticleList, error } = this.props;
     return (
       <div>
         <ArticleList
-          articles={articles} fetchArticles={fetchArticleList} page={page} loading={loading} error={error}
+          articles={articles} fetchArticles={fetchArticleList} page={page} loading={loading} loaded={loaded} error={error}
         />
         {children}
       </div>
@@ -20,7 +19,8 @@ class ArticleListPage extends Component {
 }
 
 ArticleListPage.propTypes = {
-  loading: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
   articles: PropTypes.array,
   page: PropTypes.number,
   error: PropTypes.string,
@@ -30,10 +30,11 @@ ArticleListPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 
-  const { articleList: { loading, articles, page, error } } = state
+  const { articleList: { loading, loaded, articles, page, error } } = state
 
   return {
     loading,
+    loaded,
     articles,
     page,
     error

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import Header from '../components/Header.jsx'
-import Helmet from "react-helmet";
+import SharedHelmet from '../components/SharedHelmet.js';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends Component {
     const { children } = this.props
     return (
       <div>
-        <Helmet title={'sambaiz.net'} />
+        <SharedHelmet title={'sambaiz.net'} url={`http://sambaiz.net`} title={'sambaiz.net'} description={'僕のホームページ'} />
         <Header breadcrumb={[]} />
         {children}
       </div>

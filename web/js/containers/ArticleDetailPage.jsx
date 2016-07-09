@@ -2,27 +2,28 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import ArticleDetail from '../components/ArticleDetailPage/ArticleDetail.jsx'
 import { fetchArticle, parseArticleDetail } from '../actions/articleDetail.js'
-import Helmet from "react-helmet";
+import SharedHelmet from '../components/SharedHelmet.js';
 
 class ArticleDetailPage extends Component {
 
-  componentDidMount() {
-    this.props.fetchArticle(this.props.articleId)
+  componentWillMount() {
+    const { articleId, newArticleId } = this.props;
+    if(articleId !== newArticleId) this.props.fetchArticle(newArticleId)
   }
 
   componentWillUpdate(nextProps, nextStates){
-    const { articleId, content, detail, parsing } = nextProps
-    if(!parsing && typeof detail !== "undefined" && typeof content === "undefined")
-      this.props.parseArticleDetail(articleId, detail)
+    const { newArticleId, content, detail, parsing, parsed, loaded } = nextProps
+    if(!parsing && loaded && !parsed)
+      this.props.parseArticleDetail(newArticleId, detail)
   }
 
   render() {
-    const { children, title, date, content, loading, parsing, articleId } = this.props
+    const { children, title, date, content, loading, parsing, newArticleId } = this.props
 
     return (
       <div>
-        <Helmet title={title || 'loading...'} />
-        <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={articleId} />
+        <SharedHelmet title={title || 'loading...'} url={`http://sambaiz.net/article/${newArticleId}`} title={`${title} - sambaiz.net`} description={'書いた'} />
+        <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={newArticleId} />
         {children}
       </div>
     )
@@ -31,28 +32,34 @@ class ArticleDetailPage extends Component {
 
 ArticleDetailPage.propTypes = {
   loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
   parsing: PropTypes.bool.isRequired,
+  parsed: PropTypes.bool.isRequired,
   content: PropTypes.string,
   detail: PropTypes.string,
   title: PropTypes.string,
   date: PropTypes.string,
   articleId: PropTypes.string,
+  newArticleId: PropTypes.string,
   // Injected by React Router
   children: PropTypes.node
 }
 
 function mapStateToProps(state, ownProps) {
 
-  const { articleDetail: { loading, parsing, content, detail, title, date } } = state
+  const { articleDetail: { loading, loaded, parsing, parsed, content, detail, title, date, articleId } } = state
 
   return {
     loading,
+    loaded,
     parsing,
+    parsed,
     content,
     detail,
     title,
     date,
-    articleId: ownProps.params.articleId
+    articleId,
+    newArticleId: ownProps.params.articleId
   }
 }
 

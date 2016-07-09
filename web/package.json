@@ -4,18 +4,19 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "start:prod": "node dist/js/server.js",
-    "build": "NODE_ENV=production node node_modules/webpack/bin/webpack && babel js/server.js -d dist"
+    "start:prod": "node dist/server.js",
+    "build": "NODE_ENV=production node node_modules/webpack/bin/webpack && node node_modules/webpack/bin/webpack --config webpack_node.config.js"
   },
   "author": "sambaiz",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
-    "babel-cli": "^6.10.1",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "isomorphic-style-loader": "^1.0.0",
     "json-loader": "^0.5.4",
     "postcss-loader": "^0.9.1",
     "redux-devtools": "^3.3.1",
