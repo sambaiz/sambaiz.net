@@ -16,7 +16,7 @@ export default class ArticleDetail extends Component {
         <div className={classNames(styles.markdownBody, md["markdown-body"])}>
           { loading ? <div className={loadingStyle.loader}></div> : <div></div> }
           <div dangerouslySetInnerHTML={{__html: content}} />
-          <Share title={`${title} - [sambaiz.net]`} url={`http://sambaiz.net/article/${articleId}`}/>
+          <Share title={title} url={`http://sambaiz.net/article/${articleId}`}/>
         </div>
       </div>
     )
