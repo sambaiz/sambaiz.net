@@ -10,7 +10,7 @@ export default class Header extends Component {
     return (
       <div className={styles.header}>
         <Author />
-        <Link to={''}>sambaiz.net</Link>
+        <Link to={''}>[sambaiz.net]</Link>
       </div>
     )
   }

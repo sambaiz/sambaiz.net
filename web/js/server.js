@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 import routes from './routes.js'
 import createStore from './store/configureStore.js'
 
-var app = express()
+const app = express()
 
 app.use(compression())
 
@@ -22,18 +22,28 @@ app.use(compression())
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
 app.get('/', (req, res) => {
-  render(req, res, (state) => state.articleList.loaded)
+  render(req, res,
+    (state) => state.articleList.loaded,
+    (state) => '[sambaiz.net]',
+    (state) => '僕のホームページ',
+    (state) => `http://sambaiz.net`
+)
 })
 
 app.get('/article/:articleId', (req, res) => {
-  render(req, res, (state) => state.articleDetail.loaded && state.articleDetail.parsed)
+  render(req, res,
+    (state) => state.articleDetail.loaded && state.articleDetail.parsed,
+    (state) => `${state.articleDetail.title} - [sambaiz.net]`,
+    (state) => '書いた',
+    (state) => `http://sambaiz.net${req.url}`
+  )
 })
 
-function render(req, res, isFinishLoading) {
+function render(req, res, isFinishLoading, title, description, fullUrl) {
 
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
 
-    var store = createStore();
+    let store = createStore();
 
     if (error) {
       res.status(500).send(error.message)
@@ -41,15 +51,15 @@ function render(req, res, isFinishLoading) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
 
-      var _render = () =>
+      const _render = () =>
         renderToString(<Provider store={store}>
           <RouterContext {...renderProps} />
         </Provider>)
 
-      var unscribe = store.subscribe(() => {
+      let unscribe = store.subscribe(() => {
         if(isFinishLoading(store.getState()) === true){
           res.status(200).send(
-            page(_render(), store.getState())
+            page(_render(), store.getState(), title, description, fullUrl)
           )
           unscribe();
         }
@@ -63,7 +73,7 @@ function render(req, res, isFinishLoading) {
   })
 }
 
-function page(body, state)  {
+function page(body, state, title, description, fullUrl)  {
   return `
     <!doctype html>
     <html>
@@ -72,6 +82,14 @@ function page(body, state)  {
         <meta charset="utf-8">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="/styles.css">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@sambaiz">
+        <meta name="twitter:title" content="${title(state)}">
+        <meta name="twitter:description" content="${description(state)}">
+        <meta property="og:title" content="${title(state)}">
+        <meta property="og:type" content="blog">
+        <meta property="og:image" content="http://d2wgaf7ubdj1mv.cloudfront.net/my.jpg">
+        <meta property="og:url" content="${fullUrl(state)}">
         <meta name="google-site-verification" content="CEqNYjzc4Y7hb3FY7uUkmllGzeDc40brBwQJixeH61Q" />
       </head>
       <body>
@@ -87,7 +105,7 @@ function page(body, state)  {
     `
 }
 
-var PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080
 
 app.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT)

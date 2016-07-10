@@ -22,7 +22,7 @@ class ArticleDetailPage extends Component {
 
     return (
       <div>
-        <SharedHelmet title={title || 'loading...'} url={`http://sambaiz.net/article/${newArticleId}`} title={`${title} - sambaiz.net`} description={'書いた'} />
+        <SharedHelmet title={`${title || 'loading...'} - [sambaiz.net]`} />
         <ArticleDetail date={date} title={title} content={content} loading={!!(loading || parsing)} articleId={newArticleId} />
         {children}
       </div>

@@ -13,7 +13,7 @@ class App extends Component {
     const { children } = this.props
     return (
       <div>
-        <SharedHelmet title={'sambaiz.net'} url={`http://sambaiz.net`} title={'sambaiz.net'} description={'僕のホームページ'} />
+        <SharedHelmet title={'[sambaiz.net]'} />
         <Header breadcrumb={[]} />
         {children}
       </div>
